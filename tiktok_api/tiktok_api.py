@@ -2,10 +2,10 @@ from tiktok_api.utils.my_types import VideoInfo
 from .requester import TikTokRequester
 
 
-class TikTokApi:
+class TikTokAPI:
     """Wrapper under TikTokRequester"""
-    def __init__(self) -> None:
-        self._requester = TikTokRequester()
+    def __init__(self, path_to_chrome_driver) -> None:
+        self._requester = TikTokRequester(path_to_chrome_driver)
 
     def fetch_account_links(self, account: str) -> list[str]:
         return self._requester.get_video_links_from_account(account)

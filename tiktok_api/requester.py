@@ -4,7 +4,6 @@ from fake_useragent import UserAgent
 from selenium import webdriver
 from selenium.webdriver import ChromeOptions
 
-from .config import Config
 from .utils import Parser, parser_utils
 from .utils.my_types import VideoInfo
 
@@ -14,11 +13,11 @@ BASE_URL = "https://www.tiktok.com/"
 
 class TikTokRequester:
     """Create instance of webdriver, regulate requests to TikTok and form response data"""
-    def __init__(self) -> None:
+    def __init__(self, path_to_chrome_driver) -> None:
         self._user_agent = UserAgent()
         self._options = self._set_default_options()
         self._driver = webdriver.Chrome(
-            executable_path=Config.PATH_TO_CHROME_DRIVER,
+            executable_path=path_to_chrome_driver,
             options=self._options
         )
         self._parser = Parser()

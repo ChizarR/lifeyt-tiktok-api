@@ -1,1 +1,1 @@
-from .tiktok_api import TikTokApi 
+from .tiktok_api import TikTokAPI 
