@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 class FileManager:
-    def __init__(self, tmp_dir: Path | None, 
+    def __init__(self, tmp_dir: Path | None=None, 
                  video_dir: Path | None=None) -> None:
         self._current_dir = os.getcwd()
 
@@ -31,10 +31,14 @@ class FileManager:
         return data
 
     def save_video(self, file_name: str, 
-                   iter_content: Iterator, path: Path | None=None) -> Path:
-        if path == None:
+                   iter_content: Iterator, video_path: Path | None=None) -> Path:
+        if video_path == None:
             os.makedirs(self._video_dir, exist_ok=True)
             path = Path(self._video_dir, file_name)
+        else:
+            os.makedirs(video_path, exist_ok=True)
+            path = Path(video_path, file_name)
+
         with open(path, "wb") as file:
             for chunk in iter_content:
                 if chunk:

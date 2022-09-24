@@ -1,16 +1,17 @@
-from .parser import TikTokParser
+from tiktok_api.utils.my_types import VideoInfo
+from .requester import TikTokRequester
 
 
 class TikTokApi:
     """Wrapper under TikTokParser"""
     def __init__(self) -> None:
-        self._parser = TikTokParser()
+        self._requester = TikTokRequester()
 
-    def get_videos_by_tag(self, tag: str) -> list[dict]:
-        return self._parser.fetch_data_by_tag(tag)
+    def fetch_account_links(self, account: str) -> list[str]:
+        return self._requester.get_video_links_from_account(account)
 
-    def get_account_info(self):
-        pass
+    def fetch_tag_links(self, tag: str) -> list[str]:
+        return self._requester.get_video_links_by_tag(tag)
 
-    def get_videos_from_account(self):
-        pass
+    def get_video(self, video_link: str) -> VideoInfo:
+        return self._requester.download_video(video_link)
