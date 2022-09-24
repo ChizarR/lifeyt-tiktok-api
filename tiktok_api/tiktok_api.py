@@ -3,7 +3,7 @@ from .requester import TikTokRequester
 
 
 class TikTokApi:
-    """Wrapper under TikTokParser"""
+    """Wrapper under TikTokRequester"""
     def __init__(self) -> None:
         self._requester = TikTokRequester()
 
