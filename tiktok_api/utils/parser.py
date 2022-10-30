@@ -32,6 +32,7 @@ class Parser:
         return links
 
     def parse_video_page(self, html: str) -> dict:
+        """Return main info about video"""
         soup = BeautifulSoup(html, "lxml")
         
         video_tag = soup.find_all("video")
